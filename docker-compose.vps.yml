@@ -1,0 +1,40 @@
+name: flatwatch-kosice
+
+x-flatwatch-common: &flatwatch-common
+  image: flatwatch-kosice:20260926-dedup
+  build:
+    context: .
+  env_file:
+    - .env
+  environment:
+    HOME: /tmp/flatwatch-home
+    PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+    PYTHONUNBUFFERED: "1"
+    TZ: Europe/Bratislava
+  restart: unless-stopped
+  user: "1001:1001"
+  working_dir: /app
+  volumes:
+    - ./data:/app/data
+
+services:
+  bazos:
+    <<: *flatwatch-common
+    command: ["python", "-m", "flatwatch", "run", "--no-facebook", "--no-jozue", "--no-nehnutelnosti", "--interval", "300"]
+
+  facebook:
+    <<: *flatwatch-common
+    command: ["python", "-m", "flatwatch", "run", "--no-bazos", "--no-jozue", "--no-nehnutelnosti", "--interval", "900"]
+    init: true
+    shm_size: 1gb
+    volumes:
+      - ./data:/app/data
+      - ./browser-profile/facebook:/app/browser-profile/facebook
+
+  jozue:
+    <<: *flatwatch-common
+    command: ["python", "-m", "flatwatch", "run", "--no-bazos", "--no-facebook", "--no-nehnutelnosti", "--interval", "900"]
+
+  nehnutelnosti:
+    <<: *flatwatch-common
+    command: ["python", "-m", "flatwatch", "run", "--no-bazos", "--no-facebook", "--no-jozue", "--interval", "900"]

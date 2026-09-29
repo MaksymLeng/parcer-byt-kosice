@@ -1,0 +1,90 @@
+{
+  "poll_interval_seconds": 300,
+  "database": "data/flatwatch.sqlite3",
+  "filters": {
+    "city": "Košice",
+    "rooms": [
+      2,
+      3
+    ],
+    "price_min": 500,
+    "price_max": 800,
+    "occupant_gender": "male",
+    "price_max_by_rooms": {
+      "2": 800,
+      "3": 800
+    },
+    "max_age_hours": 48,
+    "shared_housing": {
+      "enabled": true,
+      "price_min": 0,
+      "price_max": 750
+    },
+    "preferred_areas": [
+      "Železníky",
+      "Centrum",
+      "Staré Mesto"
+    ]
+  },
+  "telegram": {
+    "bot_token_env": "TELEGRAM_BOT_TOKEN",
+    "chat_id_env": "TELEGRAM_CHAT_ID"
+  },
+  "sources": {
+    "jozue": {
+      "enabled": true,
+      "url": "https://www.jozue.sk/prenajom-nehnutelnosti",
+      "max_pages": 10
+    },
+    "nehnutelnosti": {
+      "enabled": true,
+      "url": "https://www.nehnutelnosti.sk/vysledky/byty/kosice/prenajom",
+      "max_pages": 15
+    },
+    "bazos": {
+      "enabled": true,
+      "max_pages": 15,
+      "urls": [
+        "https://reality.bazos.sk/prenajmu/byt/?hledat=2+izbovy&hlokalita=040+01&humkreis=25&cenaod=500&cenado=800",
+        "https://reality.bazos.sk/prenajmu/byt/?hledat=3+izbovy&hlokalita=040+01&humkreis=25&cenaod=500&cenado=800",
+        "https://reality.bazos.sk/prenajmu/byt/?hledat=izba&hlokalita=040+01&humkreis=25&cenado=750",
+        "https://reality.bazos.sk/prenajmu/byt/?hledat=spolubyvanie&hlokalita=040+01&humkreis=25&cenado=750",
+        "https://reality.bazos.sk/prenajmu/podnajom/?hlokalita=040+01&humkreis=25&cenado=750"
+      ]
+    },
+    "facebook": {
+      "enabled": true,
+      "profile_dir": "browser-profile/facebook",
+      "headless": true,
+      "scroll_rounds": 4,
+      "chronological": true,
+      "groups": [
+        "https://www.facebook.com/groups/prenajom.spolubyvanie.kosice/",
+        "https://www.facebook.com/groups/rentflatkosice/",
+        "https://www.facebook.com/groups/byvaniebytykosice/",
+        "https://www.facebook.com/groups/1012731215471665/",
+        "https://www.facebook.com/groups/1426730914080000/",
+        "https://www.facebook.com/groups/103726469990197/",
+        "https://www.facebook.com/groups/1613405235605147/",
+        "https://www.facebook.com/groups/ukrainekosice/",
+        "https://www.facebook.com/groups/byvanieaprenajomKOSICE/",
+        "https://www.facebook.com/groups/byvanieprenajomkosice/",
+        "https://www.facebook.com/groups/449027048994430/",
+        "https://www.facebook.com/groups/1504467486458300/",
+        "https://www.facebook.com/groups/506547809420165/",
+        "https://www.facebook.com/groups/Kosice.Flats.For.Rent/",
+        "https://www.facebook.com/groups/291188588728158/",
+        "https://www.facebook.com/groups/434046700580924/",
+        "https://www.facebook.com/groups/kosicebyty/",
+        "https://www.facebook.com/groups/212789922252163/",
+        "https://www.facebook.com/groups/rentapartmentkosice/",
+        "https://www.facebook.com/groups/171065246825800/",
+        "https://www.facebook.com/groups/1065008985593930/",
+        "https://www.facebook.com/groups/748973053199583/",
+        "https://www.facebook.com/groups/253227908490242/",
+        "https://www.facebook.com/groups/1004268415045737/",
+        "https://www.facebook.com/groups/ukrainianskosice/"
+      ]
+    }
+  }
+}

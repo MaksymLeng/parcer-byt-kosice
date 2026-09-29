@@ -1,0 +1,11 @@
+.env
+.git
+.venv
+__pycache__
+*.pyc
+browser-profile
+backups
+.agents
+.codex
+data
+tests

@@ -1,0 +1,15 @@
+[Unit]
+Description=FlatWatch Košice Jozue monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/kalamanakalam/Documents/facebook parcer
+ExecStart="/home/kalamanakalam/Documents/facebook parcer/.venv/bin/python" -m flatwatch run --no-bazos --no-facebook --no-nehnutelnosti --interval 900
+Restart=always
+RestartSec=60
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
